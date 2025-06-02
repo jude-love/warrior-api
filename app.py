@@ -130,4 +130,4 @@ def create_random_data_command():
     print("Random data created successfully.")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
