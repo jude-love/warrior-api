@@ -1,0 +1,179 @@
+openapi: 3.0.0
+info:
+  title: WarriorCRM API
+  version: 1.0.0
+paths:
+  /users:
+    get:
+      summary: Get all users
+      responses:
+        '200':
+          description: List of users
+    post:
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+      responses:
+        '201':
+          description: User created
+  /users/{user_id}:
+    get:
+      summary: Get a user by ID
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User details
+  /products:
+    get:
+      summary: Get all products
+      responses:
+        '200':
+          description: List of products
+    post:
+      summary: Create a new product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                price:
+                  type: number
+      responses:
+        '201':
+          description: Product created
+  /products/{product_id}:
+    get:
+      summary: Get a product by ID
+      parameters:
+        - name: product_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Product details
+  /purchases:
+    get:
+      summary: Get all purchases
+      responses:
+        '200':
+          description: List of purchases
+    post:
+      summary: Create a new purchase
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                product_id:
+                  type: integer
+                payment_method_id:
+                  type: integer
+      responses:
+        '201':
+          description: Purchase created
+  /purchases/{purchase_id}:
+    get:
+      summary: Get a purchase by ID
+      parameters:
+        - name: purchase_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Purchase details
+  /complaints:
+    get:
+      summary: Get all complaints
+      responses:
+        '200':
+          description: List of complaints
+    post:
+      summary: Create a new complaint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                purchase_id:
+                  type: integer
+                description:
+                  type: string
+      responses:
+        '201':
+          description: Complaint created
+  /complaints/{complaint_id}:
+    get:
+      summary: Get a complaint by ID
+      parameters:
+        - name: complaint_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Complaint details
+  /payment_methods:
+    get:
+      summary: Get all payment methods
+      responses:
+        '200':
+          description: List of payment methods
+    post:
+      summary: Create a new payment method
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                type:
+                  type: string
+                details:
+                  type: string
+      responses:
+        '201':
+          description: Payment method created
+  /payment_methods/{payment_method_id}:
+    get:
+      summary: Get a payment method by ID
+      parameters:
+        - name: payment_method_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Payment method details
